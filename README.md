@@ -6,9 +6,9 @@
 
 
 ### 在线文档
-YUNDUN 官方地址：
+YUNDUN 官方地址：http://www.yundun.com
 
-Github Pages: 
+Github Pages: https://github.com/jason-gao/YUNDUN-API-DOC
 
 ### make
 1. make clean
