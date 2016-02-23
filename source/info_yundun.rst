@@ -44,6 +44,7 @@ API调用
 所有的接口都需要传递这2个参数。
     * app_id 分配的调用接口身份id，必选
     * sign 根据app_id和调用参数生成的签名，必选
+    * user_id 用户id，仅代理接口需要，需要操作的用户
 
 .. _common_response:
 
