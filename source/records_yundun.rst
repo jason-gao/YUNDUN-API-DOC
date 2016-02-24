@@ -212,7 +212,7 @@ HTTP请求方式：
 
 .. _Ns.Dns.Record.create:
 
-添加Ns记录
+添加Ns[Dns]记录
 --------------------
 接口地址：
     * http://api.yundun.cn/V1/Ns.Dns.Record.create
@@ -287,6 +287,138 @@ HTTP请求方式：
             }
         }
 
+.. _Ns.Dns.Record.list:
 
+Ns[Dns]记录列表
+--------------------
+接口地址：
+    * http://api.yundun.cn/V1/Ns.Dns.Record.list
+HTTP请求方式：
+    * POST
+请求参数：
+    * 公共参数
+    * domain_id  域名id 必选
+    * catedisplay 搜索分类，ALL[全部记录]/A[A记录]/AT_WWW[@和www记录]/CNAME[cname记录]/QYJL[启用记录]/JYJL[暂停记录]/BZJL[备注记录]
+    * offset    默认0
+    * length 默认10
+    * query 搜索值，例如@
+
+响应代码：
+    * 共通返回
+    * 2422 分类显示type错误
+    * 2416 每次最多获取xx条数据
+    * 2412 域名不能为空
+    * 1009 域名不属于此用户
+    * 2417 记录开始的偏移offset无效,最大xx
+
+
+示例::
+
+    curl -X POST http://api.yundun.cn/V1/Ns.Dns.Record.list -d 'app_id=b0de1etPkjqJfjvWmDOW&sign=xxx'
+
+返回参考：
+
+    * JSON::
+
+        {
+            "status": {
+                "code": 1,
+                "message": "操作成功",
+                "create_at": "2016-02-24 11:54:33"
+            },
+            "info": {
+                "record_total": "4"
+            },
+            "records": [
+                {
+                    "id": "59715",
+                    "domain_id": "8986",
+                    "name": "@",
+                    "type": "MX",
+                    "view": "any",
+                    "value": "mxbiz1.qq.com.",
+                    "mx": "5",
+                    "ttl": "600",
+                    "updatetime": "2016-01-14 18:10:47",
+                    "hold": "0",
+                    "status": "1",
+                    "order": "59715",
+                    "record_status": "0",
+                    "balance_group_id": "1910",
+                    "balance_status": "0",
+                    "rmid": null,
+                    "rmremark": null,
+                    "rmstatus": null,
+                    "view_text": "默认",
+                    "type_text": "MX"
+                },
+                {
+                    "id": "59714",
+                    "domain_id": "8986",
+                    "name": "@",
+                    "type": "MX",
+                    "view": "any",
+                    "value": "mxbiz2.qq.com.",
+                    "mx": "10",
+                    "ttl": "600",
+                    "updatetime": "2016-01-14 18:10:47",
+                    "hold": "0",
+                    "status": "1",
+                    "order": "59714",
+                    "record_status": "0",
+                    "balance_group_id": "1910",
+                    "balance_status": "0",
+                    "rmid": null,
+                    "rmremark": null,
+                    "rmstatus": null,
+                    "view_text": "默认",
+                    "type_text": "MX"
+                },
+                {
+                    "id": "59713",
+                    "domain_id": "8986",
+                    "name": "@",
+                    "type": "A",
+                    "view": "any",
+                    "value": "113.231.25.215",
+                    "mx": "0",
+                    "ttl": "600",
+                    "updatetime": "2016-02-24 11:43:41",
+                    "hold": "0",
+                    "status": "1",
+                    "order": "59713",
+                    "record_status": "0",
+                    "balance_group_id": "1910",
+                    "balance_status": "0",
+                    "rmid": null,
+                    "rmremark": null,
+                    "rmstatus": null,
+                    "view_text": "默认",
+                    "type_text": "A"
+                },
+                {
+                    "id": "59712",
+                    "domain_id": "8986",
+                    "name": "@",
+                    "type": "A",
+                    "view": "any",
+                    "value": "123.226.116.226",
+                    "mx": "0",
+                    "ttl": "600",
+                    "updatetime": "2016-02-24 11:43:42",
+                    "hold": "0",
+                    "status": "1",
+                    "order": "59712",
+                    "record_status": "0",
+                    "balance_group_id": "1910",
+                    "balance_status": "0",
+                    "rmid": null,
+                    "rmremark": null,
+                    "rmstatus": null,
+                    "view_text": "默认",
+                    "type_text": "A"
+                }
+            ]
+        }
 
 
