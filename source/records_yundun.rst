@@ -422,3 +422,79 @@ HTTP请求方式：
         }
 
 
+.. _Ns.Dns.Record.modify:
+
+修改Ns[Dns]列表
+--------------------
+接口地址：
+    * http://api.yundun.cn/V1/Ns.Dns.Record.modify
+HTTP请求方式：
+    * POST
+请求参数：
+    * 公共参数
+    * domain_id  域名id 必选
+    * record_id 记录id
+    * sub_domain 子域名 如test
+    * record_type  记录类型[A/CNAME/MX/]等
+    * record_line 线路，可通过线路接口获取
+    * value 记录值,例如1.1.1.1
+    * mx 0
+    * ttl 最小600
+
+响应代码：
+    * 共通返回
+    * 2412 域名不能为空
+    * 2413 record_id不能为空
+    * 1009 域名不属于此用户
+    * 2009 记录不属于此域名
+    * 2402 请将记录填写完整
+    * 2403 主机记录格式不正确
+    * 2027 主机记录不能以.结尾
+    * 2421 IP不能是局域网Ip
+    * 2405 记录值[ip格式不正确]
+    * 2019 此子域名已存在,如需修改记录点编辑
+    * 2406 CNAME记录值必须是以.结尾的域名
+    * 2407 mx记录值必须是以.结尾的域名,mx优先级必须是1-20的整数
+    * 2408 txt记录值不正确
+    * 3015 url长度最多%d
+    * 2424 记录值格式错误，必须为域名或URL
+    * 2028 只能使用默认线路
+    * 2409 ttl必须是1-604800之间
+    * 2410 记录重复
+    * 2411 记录必须有默认线路，否则解析可能出现问题
+    * 2425 同线路A记录和CNAME记录不能同时存在
+    * 2426 同线路CNAME和MX记录不能同时存在
+
+
+
+示例::
+
+    curl -X POST http://api.yundun.cn/V1/Ns.Dns.Record.modify -d 'app_id=b0de1etPkjqJfjvWmDOW&sign=xxx'
+
+返回参考：
+
+    * JSON::
+
+        {
+            "status": {
+                "code": 1,
+                "message": "操作成功",
+                "create_at": "2016-02-25 17:57:40"
+            },
+            "record": {
+                "record_id": "59713",
+                "domain_id": 8986,
+                "sub_domain": "@",
+                "sub_domain_edit": "@",
+                "record_type": "A",
+                "record_line": "默认",
+                "line": "any",
+                "value": "113.231.25.217",
+                "value_edit": "113.231.25.217",
+                "mx": 0,
+                "ttl": 600,
+                "status": "1",
+                "hold": "0",
+                "remark": ""
+            }
+        }
