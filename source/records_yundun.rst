@@ -498,3 +498,96 @@ HTTP请求方式：
                 "remark": ""
             }
         }
+
+
+.. _Ns.Dns.Record.remove:
+
+删除Ns[Dns]记录
+--------------------
+接口地址：
+    * http://api.yundun.cn/V1/Ns.Dns.Record.remove
+HTTP请求方式：
+    * POST
+请求参数：
+    * 公共参数
+    * domain_id  域名id 必选
+    * record_id 记录id
+
+响应代码：
+    * 共通返回
+    * 2412 域名不能为空
+    * 2413 record_id不能为空
+    * 1009 域名不属于此用户
+    * 2009 记录不属于此域名
+
+
+
+
+示例::
+
+    curl -X POST http://api.yundun.cn/V1/Ns.Dns.Record.remove -d 'app_id=b0de1etPkjqJfjvWmDOW&sign=xxx'
+
+返回参考：
+
+    * JSON::
+
+       {
+            "data": "删除成功",
+            "info": "删除成功",
+            "status": 1
+       }
+
+
+.. _Ns.Dns.Record.status:
+
+启用/暂停Ns[Dns]记录
+--------------------
+接口地址：
+    * http://api.yundun.cn/V1/Ns.Dns.Record.status
+HTTP请求方式：
+    * POST
+请求参数：
+    * 公共参数
+    * domain_id  域名id 必选
+    * record_id 记录id
+    * status 1启用，0暂停
+
+响应代码：
+    * 共通返回
+    * 2412 域名不能为空
+    * 2413 record_id不能为空
+    * 1009 域名不属于此用户
+    * 2009 记录不属于此域名
+
+
+
+
+示例::
+
+    curl -X POST http://api.yundun.cn/V1/Ns.Dns.Record.status -d 'app_id=b0de1etPkjqJfjvWmDOW&sign=xxx'
+
+返回参考：
+
+    * JSON::
+
+        {
+            "data": {
+                "domain_id": "8986",
+                "record_id": "59711",
+                "sub_domain": "*",
+                "sub_domain_edit": "*",
+                "record_type": "A",
+                "record_line": "默认",
+                "line": "any",
+                "value": "113.231.25.215",
+                "value_edit": "113.231.25.215",
+                "mx": "0",
+                "ttl": "600",
+                "status": 0,
+                "hold": "0",
+                "remark": ""
+            },
+            "info": "暂停成功",
+            "status": 1
+        }
+
