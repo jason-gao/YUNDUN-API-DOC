@@ -424,7 +424,7 @@ HTTP请求方式：
 
 .. _Ns.Dns.Record.modify:
 
-修改Ns[Dns]列表
+Ns[Dns]修改记录
 --------------------
 接口地址：
     * http://api.yundun.cn/V1/Ns.Dns.Record.modify
@@ -502,7 +502,7 @@ HTTP请求方式：
 
 .. _Ns.Dns.Record.remove:
 
-删除Ns[Dns]记录
+Ns[Dns]删除记录
 --------------------
 接口地址：
     * http://api.yundun.cn/V1/Ns.Dns.Record.remove
@@ -540,7 +540,7 @@ HTTP请求方式：
 
 .. _Ns.Dns.Record.status:
 
-启用/暂停Ns[Dns]记录
+Ns[Dns]启用/暂停记录
 --------------------
 接口地址：
     * http://api.yundun.cn/V1/Ns.Dns.Record.status
@@ -589,5 +589,102 @@ HTTP请求方式：
             },
             "info": "暂停成功",
             "status": 1
+        }
+
+.. _Ns.Dns.Record.saverecordremark:
+
+Ns[Dns]更新记录备注
+---------------------------
+接口地址：
+    * http://api.yundun.cn/V1/Ns.Dns.Record.saverecordremark
+HTTP请求方式：
+    * POST
+请求参数：
+    * 公共参数
+    * domain_id  域名id 必选
+    * record_id 记录id
+    * remark 备注内容，备注不存在->添加备注，存在->更新备注，remark为空时表示清空备注
+
+响应代码：
+    * 2412 域名不能为空
+    * 2413 record_id不能为空
+    * 1009 域名不属于此用户
+    * 2009 记录不属于此域名
+    * 2423 备注字符长度只能在1-200之间
+
+
+
+
+示例::
+
+    curl -X POST http://api.yundun.cn/V1/Ns.Dns.Record.saverecordremark -d 'app_id=b0de1etPkjqJfjvWmDOW&sign=xxx'
+
+返回参考：
+
+    * JSON::
+
+        {
+            "data": {
+                "domain_id": "8986",
+                "record_id": "59711",
+                "sub_domain": "*",
+                "sub_domain_edit": "*",
+                "record_type": "A",
+                "record_line": "默认",
+                "line": "any",
+                "value": "113.231.25.212",
+                "value_edit": "113.231.25.212",
+                "mx": "0",
+                "ttl": "600",
+                "status": "0",
+                "hold": "0",
+                "remark": "2016-03-15 13:21:26"
+            },
+            "info": "更新备注成功",
+            "status": 1
+        }
+
+
+.. _Ns.Dns.Record.getrecordremark:
+
+Ns[Dns]获取记录备注
+---------------------------
+接口地址：
+    * http://api.yundun.cn/V1/Ns.Dns.Record.getrecordremark
+HTTP请求方式：
+    * POST
+请求参数：
+    * 公共参数
+    * domain_id  域名id 必选
+    * record_id 记录id
+
+响应代码：
+    * 2412 域名不能为空
+    * 2413 record_id不能为空
+    * 1009 域名不属于此用户
+    * 2009 记录不属于此域名
+
+
+
+
+示例::
+
+    curl -X POST http://api.yundun.cn/V1/Ns.Dns.Record.getrecordremark -d 'app_id=b0de1etPkjqJfjvWmDOW&sign=xxx'
+
+返回参考：
+
+    * JSON::
+
+        {
+            "status": {
+                "code": 1,
+                "message": "操作成功",
+                "create_at": "2016-03-15 13:49:24"
+            },
+            "data": {
+                "remark": "2016-03-15 13:49:22",
+                "domain_id": 8986,
+                "record_id": 59711
+            }
         }
 
