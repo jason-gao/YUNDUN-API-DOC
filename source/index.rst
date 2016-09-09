@@ -18,5 +18,9 @@ YunDun用户API文档
     domains_yundun
     records_yundun
     control_yundun
-   
+    controller-record-report
+    controller-websafe
+    controller-webspeed
+    dns-add-domain
+
 

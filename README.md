@@ -56,3 +56,26 @@ YUNDUN—API-DOC
 
 ###注意
 1. 当make singlehtml时，搜索好像没用，所有修改serachbox模板，当使用此命令编译时不显示搜索框
+
+
+
+
+### 编译环境安装
+
++  Python 2.6.6
+1. wget https://bootstrap.pypa.io/get-pip.py
+2. python get-pip.py 安装pip
+3. pip install -U Sphinx 安装Sphinx
+
+### 安装插件
+
+#### .md->.rst
+
++   https://pypi.python.org/pypi/pypandoc
++   https://github.com/listatree/convert_md_2_rst
+
+1. pip install pypandoc
+2. conf.py 取消注释sys.path.insert(0, os.path.abspath('.'))
+3. extensions = ['convert_md_2_rst']添加自定义扩展配置
+
+
